@@ -1,0 +1,194 @@
+/* 🍃 General Page Layout */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* 🌐 Header */
+header {
+    background: linear-gradient(135deg, #2d3436, #636e72);
+    color: #fff;
+    padding: 40px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+header h1 {
+    font-size: 34px;
+    margin: 0;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+header .tagline {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #dfe6e9;
+    font-weight: 400;
+}
+
+/* 💻 Form Container */
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* 📝 Form Fields */
+.form-group label {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 6px;
+    display: block;
+    text-align: left;
+    color: #2d3436;
+}
+
+select {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #74b9ff;
+    background-color: #fff;
+}
+
+/* 🎯 Predict Button */
+.button-wrapper {
+    text-align: center;
+}
+
+.btn {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 6px 18px rgba(108, 92, 231, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #5f27cd, #a29bfe);
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(108, 92, 231, 0.4);
+}
+
+/* 📦 Result Box (used on result.html) */
+.result-box {
+    font-size: 18px;
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 16px;
+    border-left: 6px solid #6c5ce7;
+    animation: fadeIn 0.6s ease;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+}
+
+.result-box strong {
+    color: #2d3436;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🟡 Crime Level Styling */
+.crime-status {
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+.crime-status.very-low-crime-area {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.crime-status.low-crime-area {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.crime-status.high-crime-area {
+    background-color: #ffe0b2;
+    color: #a04500;
+}
+
+.crime-status.very-high-crime-area {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* 📋 Safety Tips + Police Box */
+.safety-tip-box {
+    background-color: #fff8dc;
+    border-left: 6px solid #f39c12;
+    padding: 16px;
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.police-box {
+    background-color: #e3f2fd;
+    border-left: 6px solid #3498db;
+    padding: 20px;
+    margin-top: 24px;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+.police-box ul {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.police-box li {
+    margin: 8px 0;
+    position: relative;
+    padding-left: 16px;
+}
+
+.police-box li i {
+    margin-right: 8px;
+    color: #2980b9;
+}
+
+.result-box a {
+    color: #6c5ce7;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.result-box a:hover {
+    text-decoration: underline;
+}
