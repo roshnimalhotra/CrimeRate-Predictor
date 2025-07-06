@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Rate Prediction</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Flask-compatible stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-shield-alt"></i> Crime Rate Predictor</h1>
+            <p class="tagline"><i class="fas fa-balance-scale"></i> Unlock Safety: Reduce Crime Rate Together</p>
+        </header>
+
+        <form action="/predict" method="POST" class="form-card">
+            <div class="form-group">
+                <label><i class="fas fa-city"></i> Select City</label>
+                <select name="city">
+                    <option value="0">Ahmedabad</option>
+                    <option value="1">Bengaluru</option>
+                    <option value="2">Chennai</option>
+                    <option value="3">Coimbatore</option>
+                    <option value="4">Delhi</option>
+                    <option value="5">Ghaziabad</option>
+                    <option value="6">Hyderabad</option>
+                    <option value="7">Indore</option>
+                    <option value="8">Jaipur</option>
+                    <option value="9">Kanpur</option>
+                    <option value="10">Kochi</option>
+                    <option value="11">Kolkata</option>
+                    <option value="12">Kozhikode</option>
+                    <option value="13">Lucknow</option>
+                    <option value="14">Mumbai</option>
+                    <option value="15">Nagpur</option>
+                    <option value="16">Patna</option>
+                    <option value="17">Pune</option>
+                    <option value="18">Surat</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-exclamation-triangle"></i> Select Crime Type</label>
+                <select name="crime">
+                    <option value="9">Murder</option>
+                    <option value="8">Kidnapping</option>
+                    <option value="7">Economic Offences</option>
+                    <option value="6">Cyber Crimes</option>
+                    <option value="5">Crime Against Women</option>
+                    <option value="4">Crime Against Children</option>
+                    <option value="3">Crime Against Senior Citizen</option>
+                    <option value="2">Crime Against ST</option>
+                    <option value="1">Crime Against SC</option>
+                    <option value="0">Crime Committed by Juveniles</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-calendar-alt"></i> Select Year</label>
+                <select name="year" id="year-dropdown"></select>
+            </div>
+
+            <div class="button-wrapper">
+                <button type="submit" class="btn"><i class="fas fa-search-location"></i> Predict</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

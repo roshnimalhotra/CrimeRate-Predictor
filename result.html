@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- External Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-shield-alt"></i> Crime Rate Predictor</h1>
+            <p class="tagline">Prediction Results</p>
+        </header>
+
+        <div class="result-box">
+            <p><strong><i class="fas fa-city"></i> City:</strong> {{ city_name }}</p>
+            <p><strong><i class="fas fa-user-secret"></i> Crime Type:</strong> {{ crime_type }}</p>
+            <p><strong><i class="fas fa-calendar-alt"></i> Year:</strong> {{ year }}</p>
+            <p><strong><i class="fas fa-users"></i> Population:</strong> {{ population }}</p>
+            <p><strong><i class="fas fa-chart-line"></i> Predicted Crime Rate:</strong> {{ crime_rate }}</p>
+            <p><strong><i class="fas fa-balance-scale"></i> Expected Number of Cases:</strong> {{ cases }}</p>
+            <p><strong><i class="fas fa-shield-virus"></i> Crime Risk Level:</strong>
+                <span class="crime-status {{ crime_status|lower|replace(' ', '-') }}">{{ crime_status }}</span>
+            </p>
+        </div>
+
+        <!-- 💡 Safety Suggestion -->
+        <div class="result-box safety-tip-box">
+            <h3><i class="fas fa-lightbulb"></i> Safety Suggestion</h3>
+            <p>{{ safety_tip }}</p>
+        </div>
+
+        <!-- 🛡️ Police Station Recommendations -->
+        <div class="result-box police-box">
+            <h3><i class="fas fa-building-shield"></i> Nearby Police Stations</h3>
+            <ul>
+                {% for station in recommended_stations %}
+                    <li><i class="fas fa-map-marker-alt"></i> {{ station }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <!-- Emergency Numbers -->
+        <div class="result-box">
+        <h3><i class="fas fa-phone"></i> Emergency Helplines</h3>
+        <p><strong>Police:</strong> <a href="tel:100">100</a></p>
+        <p><strong>Women Helpline:</strong> <a href="tel:1091">1091</a></p>
+        <p><strong>Child Helpline:</strong> <a href="tel:1098">1098</a></p>
+        </div>
+
+        <!-- 📊 Radar Chart -->
+        <div class="result-box" style="padding: 30px;">
+            <h3><i class="fas fa-chart-pie"></i> Crime Profile Radar</h3>
+            <canvas id="crimeRadarChart" style="max-width: 100%; height: auto;"></canvas>
+        </div>
+
+        <!-- 🔁 Predict Again Button -->
+        <div class="button-wrapper" style="margin-top: 30px;">
+            <a href="/" class="btn"><i class="fas fa-arrow-left"></i> Predict Again</a>
+        </div>
+    </div>
+
+    <!-- Radar Chart Script -->
+    <script>
+        const crimeData = {
+            labels: [
+                "Murder", "Kidnapping", "Economic Offences", "Cyber Crimes", 
+                "Crime Against Women", "Crime Against Children", 
+                "Crime Against Senior Citizens", "Juvenile Crimes"
+            ],
+            datasets: [{
+                label: 'Crime Rate',
+                data: [
+                    {{ crime_murder }},
+                    {{ crime_kidnapping }},
+                    {{ crime_economic }},
+                    {{ crime_cybercrime }},
+                    {{ crime_women }},
+                    {{ crime_children }},
+                    {{ crime_seniorcitizens }},
+                    {{ crime_juveniles }}
+                ],
+                backgroundColor: 'rgba(108, 92, 231, 0.15)',
+                borderColor: '#6c5ce7',
+                borderWidth: 2,
+                pointBackgroundColor: '#a29bfe'
+            }]
+        };
+
+        const ctx = document.getElementById('crimeRadarChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: crimeData,
+            options: {
+                responsive: true,
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1,
+                        max: 10
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
